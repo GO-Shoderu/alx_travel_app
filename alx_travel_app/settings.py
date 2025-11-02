@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     "drf_yasg",
 
     # local
-    "listings",
+    "alx_travel_app.listings"
 ]
 
 MIDDLEWARE = [
