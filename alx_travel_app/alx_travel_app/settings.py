@@ -11,6 +11,11 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, ["127.0.0.1", "localhost"]),
     CORS_ALLOW_ALL_ORIGINS=(bool, True),
 )
+
+env_file = BASE_DIR / ".env"
+if not env_file.exists():
+    env_file = BASE_DIR / "alx_travel_app" / ".env"
+
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 DEBUG = env("DEBUG")
@@ -31,7 +36,7 @@ INSTALLED_APPS = [
     "drf_yasg",
 
     # local
-    "alx_travel_app.listings"
+    "alx_travel_app.alx_travel_app.listings"
 ]
 
 MIDDLEWARE = [
@@ -48,7 +53,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "alx_travel_app.urls"
+# ROOT_URLCONF = "alx_travel_app.urls"
 
 TEMPLATES = [
     {
@@ -66,7 +71,11 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "alx_travel_app.wsgi.application"
+# WSGI_APPLICATION = "alx_travel_app.wsgi.application"
+
+ROOT_URLCONF = "alx_travel_app.alx_travel_app.urls"
+WSGI_APPLICATION = "alx_travel_app.alx_travel_app.wsgi.application"
+ASGI_APPLICATION = "alx_travel_app.alx_travel_app.asgi.application"
 
 # Database (MySQL via env)
 DATABASES = {
